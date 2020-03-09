@@ -18,7 +18,7 @@ class CreateTodosTable extends Migration
             $table->string('subject', 255);
             $table->string('content', 255)->default('');
             $table->boolean('context');
-            $table->timestamp('due_on')->nullable();
+            $table->timestamp('due_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('user_id')
