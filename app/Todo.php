@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Tags\HasTags;
 
 class Todo extends Model
 {
     use SoftDeletes;
+    use HasTags;
 
     /**
      * The model's default values for attributes.
