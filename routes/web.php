@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome')->name('welcome');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::view('/todos/new', 'create')->name('create')->middleware('auth');;
+Route::get('/todos', 'HomeController@todos')->name('todos')->middleware('auth');
+Route::view('/about', 'about')->name('about');
+Route::permanentRedirect('/github', 'https://github.com/sixpeteunder/todo')->name('github');
+
