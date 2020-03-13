@@ -73,4 +73,18 @@ class HomeController extends Controller
         /** @noinspection PhpUndefinedFieldInspection */
         return view('todos', ["todos" => Auth::user()->todos]);
     }
+
+    /**
+     * Show a to-do item.
+     *
+     * @param Todo $todo
+     * @return Renderable
+     */
+    public function todo($id, Todo $todo)
+    {
+        // TODO Find a better way to do this
+        $todo = Todo::find($id);
+        if ($todo->user_id !== Auth::id()) abort(403);
+        return view('todo', ["todo" => $todo]);
+    }
 }

@@ -31,6 +31,15 @@ class Todo extends Model
     ];
 
     /**
+     * The attributes that will be cast to Carbon instances.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'due_at'
+    ];
+
+    /**
      * Get the user that owns the todo.
      */
     public function user()
