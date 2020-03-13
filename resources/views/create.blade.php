@@ -8,7 +8,7 @@
                     <div class="card-header">Create A To-Do</div>
 
                     <div class="card-body">
-                        <form action="" method="post" class="form">
+                        <form method="post" class="form">
                             @csrf
                             <div class="form-group">
                                 <label class="control-label" for="subject">Subject*</label>
@@ -22,11 +22,18 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="tags">Tags</label>
-                                <input type="text" name="tags" id="tags" class="form-control">
+                                <select class="select2 form-control" id="tags" name="tags[]" multiple="multiple"
+                                        data-tags="true" data-placeholder="Select your tags" data-allow-clear="true"
+                                        data-token-separators="[',', ' ']">
+                                    <?php /** @var Tag[] $tags */ ?>use Spatie\Tags\Tag;
+                                    @foreach ($tags as $tag)
+                                        <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="date_due">Date Due</label>
-                                <input type="datetime-local" name="date_due" id="date_due" class="form-control">
+                                <label class="control-label" for="due_at">Date Due</label>
+                                <input type="datetime-local" name="due_at" id="due_at" class="form-control">
                             </div>
                             <p class="small text-danger">*Required</p>
                             <div class="form-group d-flex">

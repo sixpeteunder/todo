@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\Tags\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,8 @@ Route::view('/', 'welcome')->name('welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::view('/todos/new', 'create')->name('create')->middleware('auth');;
+Route::view('/todos/new', 'create', ["tags" => Tag::all()])->name('create')->middleware('auth');
+Route::post('todos/new', 'HomeController@create')->middleware('auth');
 Route::get('/todos', 'HomeController@todos')->name('todos')->middleware('auth');
 Route::view('/about', 'about')->name('about');
 Route::permanentRedirect('/github', 'https://github.com/sixpeteunder/todo')->name('github');
