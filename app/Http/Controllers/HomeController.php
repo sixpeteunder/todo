@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Todo;
+use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -69,6 +70,7 @@ class HomeController extends Controller
      */
     public function todos()
     {
-        return view('todos');
+        /** @noinspection PhpUndefinedFieldInspection */
+        return view('todos', ["todos" => Auth::user()->todos]);
     }
 }

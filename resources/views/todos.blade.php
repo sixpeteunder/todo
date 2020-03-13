@@ -8,7 +8,11 @@
                     <div class="card-header">To-Do List</div>
 
                     <div class="card-body">
-                        <p>Coming Soon.</p>
+                        <ul>
+                        @foreach($todos as $todo)
+                            <li><a href="/todos/{{$todo->id}}">{{$todo->subject}}</a> </li>
+                        @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

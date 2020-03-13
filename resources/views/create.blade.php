@@ -25,7 +25,6 @@
                                 <select class="select2 form-control" id="tags" name="tags[]" multiple="multiple"
                                         data-tags="true" data-placeholder="Select your tags" data-allow-clear="true"
                                         data-token-separators="[',', ' ']">
-                                    <?php /** @var Tag[] $tags */ ?>use Spatie\Tags\Tag;
                                     @foreach ($tags as $tag)
                                         <option value="{{ $tag->name }}">{{ $tag->name }}</option>
                                     @endforeach
