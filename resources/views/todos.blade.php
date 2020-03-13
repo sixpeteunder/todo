@@ -8,9 +8,13 @@
                     <div class="card-header">To-Do List</div>
 
                     <div class="card-body">
-                        <ul>
+                        <ul class="px-0" style="list-style: none;">
                         @foreach($todos as $todo)
-                            <li><a href="/todos/{{$todo->id}}">{{$todo->subject}}</a> </li>
+                                <li>
+                                    <!--suppress CheckEmptyScriptTag, JSUnresolvedVariable -->
+                                    <x-todo :todo="$todo"/>
+                                </li>
+                            <li> </li>
                         @endforeach
                         </ul>
                     </div>
