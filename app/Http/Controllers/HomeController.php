@@ -80,11 +80,29 @@ class HomeController extends Controller
      * @param Todo $todo
      * @return Renderable
      */
-    public function todo($id, Todo $todo)
+    public function todo(Todo $todo)
     {
-        // TODO Find a better way to do this
-        $todo = Todo::find($id);
         if ($todo->user_id !== Auth::id()) abort(403);
         return view('todo', ["todo" => $todo]);
+    }
+
+    /**
+     * Delete a to-do item.
+     *
+     * @param Todo $todo
+     * @return RedirectResponse
+     */
+    public function delete(Todo $todo)
+    {
+        if ($todo->user_id !== Auth::id())
+            return redirect()->route('todos')->with('notify', 'You are not authorized to delete that!');
+
+        try {
+            $todo->delete();
+        } catch (\Exception $e) {
+            return redirect()->route('todos')->with('notify', 'Something went wrong!');
+        }
+
+        return redirect()->route('todos')->with('notify', 'Item Deleted!');
     }
 }

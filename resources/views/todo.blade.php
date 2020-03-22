@@ -35,6 +35,13 @@
                                 </x-alert>
                             @endunless
                         @endif
+
+                        <h4 class="mt-0">
+                        @foreach($todo->tags as $tag)
+                            <span class="badge badge-pill badge-info text-light font-weight-lighter mt-2">{{ $tag->name }}</span>
+                        @endforeach
+                        </h4>
+
                         <p>{{$todo->content}}
                         <hr>
                         <h6>Created: {{$todo->created_at}}</h6>

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
 use Carbon\Carbon;
 
+/**
+ * @property int user_id
+ * @property Carbon due_at
+ */
 class Todo extends Model
 {
     use SoftDeletes;

@@ -78,6 +78,15 @@
         </div>
     </nav>
 
+    @if (session('notify'))
+        <div class="alert alert-info alert-dismissible">
+            {{ session('notify') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                &times;
+            </button>
+        </div>
+    @endif
+
     <main class="py-4">
         @yield('content')
     </main>
